@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
 
 class CommandsTableSeeder extends Seeder
@@ -14,11 +15,12 @@ class CommandsTableSeeder extends Seeder
      */
     public function run()
     {
+
         $faker = Faker::create();
 
         // create 100 commands.
         for($i = 0; $i < 100; $i++) {
-            Db::table('commands')->insert([
+            DB::table('commands')->insert([
                 'name'       => $faker->word(),
                 'country'    => $faker->country(),
                 'city'       => $faker->city(),
