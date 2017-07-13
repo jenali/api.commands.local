@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name'       => 'user',
             'email'      => 'user@user.net',
-            'rid'        => 1,
+            'rid'        => 2,
             'password'   => bcrypt('user'),
             'created_at' => date('Y-m-d H:i:s'),
         ]);
