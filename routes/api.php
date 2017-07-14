@@ -15,18 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+|----------------------------------------------------------------------------
+| Users routers.
+|----------------------------------------------------------------------------
+ */
 //Login user.
 Route::post('login', 'v1\UserController@login')->middleware('cors');
+Route::get('login', 'v1\UserController@details')->middleware(['cors', 'auth:api']);
 
+/*
+|----------------------------------------------------------------------------
+| Commands routers.
+|----------------------------------------------------------------------------
+ */
 // Get lists
-Route::get('command', 'v1\CommandController@list')->middleware(['cors', 'auth:api']);
+Route::get('commands', 'v1\CommandController@list')->middleware(['cors', 'auth:api']);
 // Create command.
-Route::post('command', 'v1\CommandController@create')->middleware(['cors', 'auth:api']);
+Route::post('commands', 'v1\CommandController@create')->middleware(['cors', 'auth:api']);
 // Get command by id.
-Route::get('command/{id}', 'v1\CommandController@view')->middleware(['cors','auth:api']);
+Route::get('commands/{id}', 'v1\CommandController@view')->middleware(['cors', 'auth:api']);
 // Update command by id.
-Route::put('command/{id}', 'v1\CommandController@update')->middleware(['cors','auth:api']);
+Route::put('commands/{id}', 'v1\CommandController@update')->middleware(['cors', 'auth:api']);
 // Delete command by id.
-Route::delete('command/{id}', 'v1\CommandController@update')->middleware(['cors','auth:api']);
+Route::delete('commands/{id}', 'v1\CommandController@update')->middleware(['cors', 'auth:api']);
 
 

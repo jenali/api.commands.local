@@ -27,11 +27,11 @@ class CommandController extends Controller
         $data['canEdit'] = false;
         $data['canDelete'] = false;
         $data['canCreate'] = false;
-        if($user->rid == 1) {
+//        if($user->rid == 1) {
             $data['canEdit'] = true;
             $data['canDelete'] = true;
             $data['canCreate'] = true;
-        }
+//        }
 
         return response()->json(['success' => true, 'data' => $data, 'code' => 200]);
     }
