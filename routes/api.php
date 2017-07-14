@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,15 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Login user.
+Route::post('login', 'v1\UserController@login')->middleware('cors');
 
-Route::post('login','API\UserController@login');
+// Get lists
+Route::get('command', 'v1\CommandController@list')->middleware(['cors', 'auth:api']);
+// Create command.
+Route::post('command', 'v1\CommandController@create')->middleware(['cors', 'auth:api']);
+// Get command by id.
+Route::get('command/{id}', 'v1\CommandController@view')->middleware(['cors','auth:api']);
+// Update command by id.
+Route::put('command/{id}', 'v1\CommandController@update')->middleware(['cors','auth:api']);
+// Delete command by id.
+Route::delete('command/{id}', 'v1\CommandController@update')->middleware(['cors','auth:api']);
 
-Route::group(['prefix'=>'api'],function(){
-    //login user.
-    Route::post('login','API\UserController@login');
 
-
-});
