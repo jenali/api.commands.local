@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Command;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class CommandController extends Controller
@@ -23,15 +24,15 @@ class CommandController extends Controller
     {
         $user = Auth::user();
 
-        $data['commands'] = Command::all();
+        $data['commands'] = DB::table('commands')->orderBy('id', 'desc')->get();
         $data['canEdit'] = false;
         $data['canDelete'] = false;
         $data['canCreate'] = false;
-//        if($user->rid == 1) {
+        if($user->rid == 1) {
             $data['canEdit'] = true;
             $data['canDelete'] = true;
             $data['canCreate'] = true;
-//        }
+        }
 
         return response()->json(['success' => true, 'data' => $data, 'code' => 200]);
     }
