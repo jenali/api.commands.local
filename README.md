@@ -29,3 +29,16 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
+7. Init Passport.
+```
+php artisan passport:install
+```
+8. create a personal access client.
+```
+php artisan passport:client --password
+```
+Name of personal access client = front.
+
+## Uses
+- admin login: admin@admin.net:admin
+- user login: user@user.net:user

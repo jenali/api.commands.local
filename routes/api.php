@@ -38,6 +38,6 @@ Route::get('commands/{id}', 'v1\CommandController@view')->middleware(['cors', 'a
 // Update command by id.
 Route::put('commands/{id}', 'v1\CommandController@update')->middleware(['cors', 'auth:api']);
 // Delete command by id.
-Route::delete('commands/{id}', 'v1\CommandController@update')->middleware(['cors', 'auth:api']);
+Route::delete('commands/{id}', 'v1\CommandController@delete')->middleware(['cors', 'auth:api']);
 
 
